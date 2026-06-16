@@ -17,3 +17,10 @@ export const registerSchema = z
     path: ['confirm'],
   })
   .transform(({ confirm, ...data }) => data);
+
+export const loginSchema = z.object({
+  email: z.email('invalid email address'),
+  password: z
+    .string('password must be a string')
+    .min(1, 'password is required'),
+});

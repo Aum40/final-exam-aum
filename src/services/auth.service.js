@@ -1,3 +1,4 @@
+import { email } from 'zod';
 import { hashService } from './hash.service.js';
 import { userService } from './user.service.js';
 
@@ -8,3 +9,5 @@ authService.register = async (input) => {
   await userService.create({ email: input.email, password: hash });
   //insert new user
 };
+
+authService.login = async (email, password) => {};

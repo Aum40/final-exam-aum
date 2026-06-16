@@ -5,3 +5,7 @@ authController.register = async (req, res) => {
   await authService.register(req.body);
   res.status(201).json({ message: 'user registered successfully' });
 };
+authController.login = async (req, res) => {
+  const { email, password } = req.body;
+  await authService.login(email, password);
+};
