@@ -38,13 +38,48 @@ RESPONSE
     401 message
     500 message
 - ME
+GET /auth/me
+AUTHORIZATION bearer
+RESPONSE
+    200 user
+    401 message
+    500 message
 
 ONLY USER
 - CREATE TODO
+    POST /todos
+    AUTHORIZATION Bearer access_token
+-BODY
+    title
+    status
+    
+-RESPONSE
+    201 todo
+    400 message
+    401 message
+    403 message
+    500 message
+
 - UPDATE TODO
+PUT /todo/:id
+AUTHORIZATION Bearer access_token
+BODY
+    title?
+    status?
+    dueDate?
+-RESPONSE
+    201 todo
+    400 message
+    401 message
+    403 message
+    500 message
+
 - GET ALL TODO
 - DELETE TODO
 
 ONLY ADMIN
 - GET ALL USER
-- DELETE USER (SOFT DELETE) 
+- DELETE USER (SOFT DELETE)
+POST /users/:id/disable
+- ENABLE USER
+POST /users/:id/enable

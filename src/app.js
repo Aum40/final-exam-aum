@@ -5,13 +5,14 @@ import { json } from 'zod';
 import morgan from 'morgan';
 import { notFoundMiddleware } from './middlewares/notfound.middleware.js';
 import { authRouter } from './routes/auth.route.js';
+import { todoRounter } from './routes/todo.route.js';
 
 const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 
 app.use('/auth', authRouter);
-
+app.use('/todos', todoRounter);
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 
