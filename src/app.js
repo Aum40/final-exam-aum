@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
 import { errorMiddleware } from './middlewares/error.middleware.js';
-import { authRouter } from './routes/auth.route.js';
 import { json } from 'zod';
 import morgan from 'morgan';
 import { notFoundMiddleware } from './middlewares/notfound.middleware.js';
+import { authRouter } from './routes/auth.route.js';
 
 const app = express();
 app.use(express.json());

@@ -19,13 +19,13 @@ enum role {
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique
-  password   String
-  role       role      @default(USER)
-  created_at DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt  DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
-  delete_at  DateTime? @map("deleted_at")
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  role      role      @default(USER)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  deleteAt  DateTime? @map("deleted_at")
 
   todos Todo[]
 

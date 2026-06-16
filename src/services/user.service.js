@@ -1,3 +1,4 @@
+import { email } from 'zod';
 import { prisma } from '../db/prisma.js';
 import { createError } from '../utils/create-error.js';
 
@@ -12,4 +13,13 @@ userService.create = async (data) => {
     }
     throw err;
   }
+};
+
+userService.findByEmail = (email) => {
+  return prisma.user.findFirst({
+    where: {
+      email,
+      deleteAt: null,
+    },
+  });
 };

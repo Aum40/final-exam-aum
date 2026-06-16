@@ -3,7 +3,7 @@ import { authController } from '../controllers/auth.controller.js';
 import { loginSchema, registerSchema } from '../schemas/auth.schema.js';
 import { validate } from '../middlewares/validate.middleware.js';
 
-const authRouter = Router();
+export const authRouter = Router();
 
 authRouter.post(
   '/register',
