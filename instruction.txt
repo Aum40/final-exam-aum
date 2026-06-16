@@ -1,0 +1,41 @@
+- pnpm init
+- pnpm i express /dotenv /@prisma/client /@prisma/adapter-pg /bcrypt/jsonwebtoken/zod
+- pnpm i -D nodemon and pnpm i -D prisma add "dev": "node --watch index.js"&"db:run": "node --watch prisma.js" in package.json
+- create src folder,app.js,.env
+- add variable to .env
+- add script in package.json to start a dev server
+- create express app object and listen to some port in app.js
+- add essential middleware, parsing request body, not found,error handling
+- create schema.prisma.schema and write your model,change DATABASE_URL in .env
+    table user
+    -id PK , email unique,password,role ENUM(USER,ADMIN),created_at,delete_at(can be null)
+    table todos
+    -id PK , title,status,due_date,created_at,update_at,user_id FK
+- sync your postgres db with schema.prisma
+- generate prisma client
+- create validate middleware , authenticate middleware
+
+- REGISTER
+  POST /auth/register
+  BODY
+    email
+    password
+    confirm
+RESPONSE
+    201 message
+    400 message
+    409 message
+    500 message
+
+- LOGIN
+- ME
+
+ONLY USER
+- CREATE TODO
+- UPDATE TODO
+- GET ALL TODO
+- DELETE TODO
+
+ONLY ADMIN
+- GET ALL USER
+- DELETE USER (SOFT DELETE) 
