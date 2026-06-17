@@ -33,13 +33,13 @@ model User {
 }
 
 model Todo {
-  id         Int       @id @default(autoincrement())
-  title      String
-  status     Boolean   @default(false)
-  dueDate    DateTime? @map("due_date") @db.Date
-  created_at DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt  DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
-  userId     Int       @map("user_id")
+  id        Int       @id @default(autoincrement())
+  title     String
+  status    Boolean   @default(false)
+  dueDate   DateTime? @map("due_date") @db.Date
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  userId    Int       @map("user_id")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
