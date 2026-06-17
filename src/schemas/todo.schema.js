@@ -5,3 +5,5 @@ export const createTodoSchema = z.object({
   status: z.boolean('status must be a boolean').optional(),
   dueDate: z.iso.date('invalid ISO date format').optional(),
 });
+
+export const updateTodoSchema = createTodoSchema.partial();

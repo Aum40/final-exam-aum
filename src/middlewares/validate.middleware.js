@@ -10,8 +10,19 @@ export const validate = (schemas) => (req, res, next) => {
         'Provided request body is invalid',
         z.flattenError(result.error),
       );
-      console.log(result.data);
     }
+    req.body = result.data;
+  }
+  if (schemas.params) {
+    const result = schemas.params.safeParse(req.params);
+    if (!result.success) {
+      createError(
+        400,
+        'Provided request params is invalid',
+        z.flattenError(result.error),
+      );
+    }
+    req.params = result.data;
   }
   next();
 };
