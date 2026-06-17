@@ -28,3 +28,10 @@ todoService.update = async (id, userId, input) => {
     },
   });
 };
+todoService.findAll = (userId) =>
+  prisma.todo.findMany({
+    where: { userId },
+    orderBy: {
+      updatedAt: 'desc',
+    },
+  });

@@ -19,3 +19,5 @@ todoRounter.put(
   validate({ body: updateTodoSchema, params: intIdSchema }),
   todocontroller.update,
 );
+
+todoRounter.get('/', todocontroller.getAll);
