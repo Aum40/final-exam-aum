@@ -1,13 +1,15 @@
 import 'dotenv/config';
 import express from 'express';
 import { errorMiddleware } from './middlewares/error.middleware.js';
-import { json } from 'zod';
+import { core, json } from 'zod';
 import morgan from 'morgan';
 import { notFoundMiddleware } from './middlewares/notfound.middleware.js';
 import { authRouter } from './routes/auth.route.js';
 import { todoRounter } from './routes/todo.route.js';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
