@@ -1,4 +1,4 @@
-import z, { email } from 'zod';
+import z, { email, string } from 'zod';
 
 const passwordSchema = z
   .string()
@@ -11,6 +11,7 @@ export const registerSchema = z
     email: z.email(),
     password: passwordSchema,
     confirm: passwordSchema,
+    name: z.string(),
   })
   .refine((Value) => Value.password === Value.confirm, {
     error: 'Password and comfirm password did not match',

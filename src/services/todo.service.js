@@ -7,7 +7,9 @@ todoService.create = (userId, input) =>
     data: {
       userId,
       ...input,
-      dueDate: input.dueDate ? new Date(input.dueDate) : null,
+      transactionDate: input.transactionDate
+        ? new Date(input.transactionDate)
+        : null,
     },
   });
 todoService.update = async (id, userId, input) => {
@@ -24,7 +26,9 @@ todoService.update = async (id, userId, input) => {
     where: { id },
     data: {
       ...input,
-      dueDate: input.dueDate ? new Date(input.dueDate) : null,
+      transactionDate: input.transactionDate
+        ? new Date(input.transactionDate)
+        : null,
     },
   });
 };

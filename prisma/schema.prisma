@@ -13,35 +13,34 @@ datasource db {
   provider = "postgresql"
 }
 
-enum role {
-  ADMIN
-  USER
+enum type {
+  EXPENSE
+  INCOME
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
   password  String
-  role      role      @default(USER)
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
-  deleteAt  DateTime? @map("deleted_at")
+  name      String?
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
 
-  todos Todo[]
+  expense Expense[]
 
   @@map("users")
 }
 
-model Todo {
-  id        Int       @id @default(autoincrement())
-  title     String
-  status    Boolean   @default(false)
-  dueDate   DateTime? @map("due_date") @db.Date
-  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
-  userId    Int       @map("user_id")
+model Expense {
+  id              Int       @id @default(autoincrement())
+  userId          Int       @map("user_id")
+  title           String
+  amount          Int
+  transactionDate DateTime? @map("transaction_date") @db.Date
+  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("todos")
+  @@map("expenses")
 }

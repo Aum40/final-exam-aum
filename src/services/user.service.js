@@ -19,14 +19,12 @@ userService.findByEmail = (email) =>
   prisma.user.findFirst({
     where: {
       email,
-      deleteAt: null,
     },
   });
 userService.findById = (id) =>
   prisma.user.findFirst({
     where: {
       id,
-      deleteAt: null,
     },
     omit: {
       password: true,

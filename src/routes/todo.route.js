@@ -8,7 +8,7 @@ import { createTodoSchema, updateTodoSchema } from '../schemas/todo.schema.js';
 import { intIdSchema } from '../schemas/common.schema.js';
 export const todoRounter = Router();
 todoRounter.use(autheticate);
-todoRounter.use(checkRole('USER', 'ADMIN'));
+// todoRounter.use(checkRole('USER', 'ADMIN'));
 todoRounter.post(
   '/',
   validate({ body: createTodoSchema }),

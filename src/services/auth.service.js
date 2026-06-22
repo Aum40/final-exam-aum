@@ -3,13 +3,16 @@ import { hashService } from './hash.service.js';
 import { userService } from './user.service.js';
 import { createError } from '../utils/create-error.js';
 import { jwtService } from './jwt.service.js';
-import { role } from '../db/generated/prisma/index.js';
 
 export const authService = {};
 authService.register = async (input) => {
   // hash password
   const hash = await hashService.hash(input.password);
-  await userService.create({ email: input.email, password: hash });
+  await userService.create({
+    email: input.email,
+    password: hash,
+    name: input.name,
+  });
   //insert new user
 };
 
@@ -27,7 +30,6 @@ authService.login = async (email, password) => {
   const access_token = jwtService.sign({
     sub: user.id,
     email: user.email,
-    role: user.role,
   });
   const { password: _, ...userWithoutPassword } = user;
 
