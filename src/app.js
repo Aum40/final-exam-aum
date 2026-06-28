@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 app.use('/auth', authRouter);
-app.use('/todos', todoRounter);
+app.use('/expenses', todoRounter);
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 
