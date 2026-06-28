@@ -19,5 +19,14 @@ todoRounter.patch(
   validate({ body: updateTodoSchema, params: intIdSchema }),
   todocontroller.update,
 );
-
+todoRounter.delete(
+  '/:id',
+  validate({ params: intIdSchema }),
+  todocontroller.delete,
+);
+todoRounter.get(
+  '/:id',
+  validate({ params: intIdSchema }),
+  todocontroller.getOne,
+);
 todoRounter.get('/', todocontroller.getAll);
