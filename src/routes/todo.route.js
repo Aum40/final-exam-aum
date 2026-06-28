@@ -14,7 +14,7 @@ todoRounter.post(
   validate({ body: createTodoSchema }),
   todocontroller.create,
 );
-todoRounter.put(
+todoRounter.patch(
   '/:id',
   validate({ body: updateTodoSchema, params: intIdSchema }),
   todocontroller.update,

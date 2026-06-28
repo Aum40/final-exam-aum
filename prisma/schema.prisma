@@ -32,14 +32,15 @@ model User {
 }
 
 model Expense {
-  id              Int       @id @default(autoincrement())
-  userId          Int       @map("user_id")
+  id              Int      @id @default(autoincrement())
+  userId          Int      @map("user_id")
   title           String
   amount          Int
   type            Type
-  transactionDate DateTime? @map("transaction_date") @db.Date
-  createdAt       DateTime  @default(now()) @map("created_at") @db.Timestamptz(3)
-  updatedAt       DateTime  @updatedAt @map("updated_at") @db.Timestamptz(3)
+  transactionDate DateTime @map("transaction_date") @db.Date
+  note            String?
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  updatedAt       DateTime @updatedAt @map("updated_at") @db.Timestamptz(3)
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
