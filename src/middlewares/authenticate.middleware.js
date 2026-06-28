@@ -24,7 +24,7 @@ export const autheticate = async (req, res, next) => {
     if (err.name === 'TokenExpiredError') {
       createError(401, 'Token Expired');
     }
-    if (err.name === 'jsonWebTokenError') {
+    if (err.name === 'JsonWebTokenError') {
       createError(401, 'Invalid Token');
     }
     throw err;

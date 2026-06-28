@@ -6,14 +6,14 @@ import { jwtService } from './jwt.service.js';
 
 export const authService = {};
 authService.register = async (input) => {
-  // hash password
   const hash = await hashService.hash(input.password);
-  await userService.create({
+  const user = await userService.create({
     email: input.email,
     password: hash,
     name: input.name,
   });
-  //insert new user
+  const { password: _, ...userWithoutPassword } = user;
+  return userWithoutPassword; // ← เพิ่ม return ข้อมูล user (ไม่มี password)
 };
 
 authService.login = async (email, password) => {
